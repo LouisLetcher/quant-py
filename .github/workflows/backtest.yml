@@ -1,0 +1,34 @@
+name: CI - Run Tests & Backtests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Linting & Formatting
+        run: |
+          black --check .
+          flake8 .
+          isort --check-only .
+
+      - name: Run Tests
+        run: pytest tests/
+
+      - name: Run Backtests with Lean
+        run: lean backtest "algorithms/stocks/mean_reversion.py"

@@ -1,0 +1,27 @@
+name: Sync with QuantConnect
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Install Lean CLI
+        run: pip install lean
+
+      - name: Authenticate QuantConnect
+        run: lean login --api-key ${{ secrets.QUANTCONNECT_API_KEY }}
+
+      - name: Push Strategies to QuantConnect
+        run: lean cloud push

@@ -1,0 +1,26 @@
+# Data handling
+pandas
+numpy
+
+# Market Data APIs
+ccxt        # For crypto exchanges
+yfinance    # For stock market data
+alpha_vantage  # For fundamental & forex data
+quandl      # For historical market data
+
+# Trading & Backtesting
+quantconnect    # QuantConnect Lean CLI & Algorithm Framework
+lean           # QuantConnect Lean backtesting engine
+
+# Performance Tracking & ML
+scikit-learn   # ML models for predictive strategies
+statsmodels    # Statistical modeling & regressions
+matplotlib     # Data visualization
+seaborn        # Enhanced visualization
+
+# Development & Utilities
+black          # Python code formatter
+flake8         # Python linting
+isort          # Organizes imports
+pytest         # Unit testing framework
+pre-commit     # Automates linting & formatting
